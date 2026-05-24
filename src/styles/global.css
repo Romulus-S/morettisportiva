@@ -1,0 +1,1290 @@
+/* ────────────────────────────────────────────────
+   DESIGN SYSTEM — Moretti Sportiva Registry
+   ──────────────────────────────────────────────── */
+
+:root {
+  --font-system: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui,
+    'Helvetica Neue', Arial, sans-serif;
+
+  /* Colors — Light */
+  --color-text-primary: #1a1a1a;
+  --color-text-secondary: #5c5c5c;
+  --color-text-tertiary: #9a9a9a;
+  --color-border: rgba(0, 0, 0, 0.1);
+  --color-bg-primary: #fafaf8;
+  --color-bg-secondary: #f2f1ee;
+
+  /* Status */
+  --color-located-bg: #EAF3DE;
+  --color-located-text: #3B6D11;
+  --color-unlocated-bg: #FAEEDA;
+  --color-unlocated-text: #854F0B;
+  --color-destroyed-bg: #FCEBEB;
+  --color-destroyed-text: #A32D2D;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-text-primary: #e6e3dd;
+    --color-text-secondary: #8a8680;
+    --color-text-tertiary: #525050;
+    --color-border: rgba(255, 255, 255, 0.08);
+    --color-bg-primary: #111110;
+    --color-bg-secondary: #1c1b19;
+
+    --color-located-bg: #16260d;
+    --color-located-text: #82b85a;
+    --color-unlocated-bg: #271a08;
+    --color-unlocated-text: #d49060;
+    --color-destroyed-bg: #271010;
+    --color-destroyed-text: #d47070;
+  }
+}
+
+/* ── Reset ── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-system);
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button {
+  font-family: var(--font-system);
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* ── Navigation ── */
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  height: 60px;
+  border-bottom: 0.5px solid var(--color-border);
+  position: sticky;
+  top: 0;
+  background-color: var(--color-bg-primary);
+  z-index: 100;
+}
+
+.nav-logo {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  text-decoration: none;
+}
+
+.nav-logo-primary {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  line-height: 1;
+}
+
+.nav-logo-secondary {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  line-height: 1;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  list-style: none;
+}
+
+.nav-link {
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+.nav-link:hover {
+  color: var(--color-text-primary);
+}
+
+.nav-link.active {
+  color: var(--color-text-primary);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-thickness: 1px;
+}
+
+.nav-hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+
+.nav-hamburger span {
+  display: block;
+  width: 22px;
+  height: 0.5px;
+  background-color: var(--color-text-primary);
+}
+
+.nav-mobile {
+  display: none;
+  position: fixed;
+  top: 60px;
+  left: 0;
+  right: 0;
+  background-color: var(--color-bg-primary);
+  border-bottom: 0.5px solid var(--color-border);
+  padding: 24px 40px;
+  z-index: 99;
+}
+
+.nav-mobile.open {
+  display: block;
+}
+
+.nav-mobile .nav-links {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 18px;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 20px;
+  }
+  .nav-hamburger {
+    display: flex;
+  }
+  .nav-links {
+    display: none;
+  }
+  .nav-mobile {
+    padding: 24px 20px;
+  }
+}
+
+/* ── Layout ── */
+
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 64px 40px;
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: 40px 20px;
+  }
+}
+
+/* ── Typography helpers ── */
+
+.label {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  line-height: 1;
+}
+
+/* ── Status badge ── */
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.badge-located {
+  background-color: var(--color-located-bg);
+  color: var(--color-located-text);
+}
+
+.badge-unlocated {
+  background-color: var(--color-unlocated-bg);
+  color: var(--color-unlocated-text);
+}
+
+.badge-destroyed {
+  background-color: var(--color-destroyed-bg);
+  color: var(--color-destroyed-text);
+}
+
+/* ── Registry — Hero ── */
+
+.registry-hero {
+  margin-bottom: 48px;
+}
+
+.registry-hero h1 {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 8px 0 12px;
+}
+
+.registry-hero p {
+  color: var(--color-text-secondary);
+  max-width: 560px;
+}
+
+/* ── Stats row ── */
+
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+
+.stat-card {
+  padding: 20px 24px;
+  background-color: var(--color-bg-secondary);
+  border-right: 0.5px solid var(--color-border);
+}
+
+.stat-card:last-child {
+  border-right: none;
+}
+
+.stat-value {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  color: var(--color-text-primary);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-label {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+@media (max-width: 768px) {
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+  .stat-card {
+    border-right: none;
+    border-bottom: 0.5px solid var(--color-border);
+  }
+  .stat-card:last-child {
+    border-bottom: none;
+  }
+}
+
+/* ── Tabs bar ── */
+
+.tabs-bar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  border-bottom: 0.5px solid var(--color-border);
+  margin-bottom: 28px;
+}
+
+.tabs {
+  display: flex;
+}
+
+.tab {
+  padding: 10px 14px;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  cursor: pointer;
+  transition: color 0.15s;
+  margin-bottom: -0.5px;
+  white-space: nowrap;
+}
+
+.tab:first-child {
+  padding-left: 0;
+}
+
+.tab:hover {
+  color: var(--color-text-primary);
+}
+
+.tab.active {
+  color: var(--color-text-primary);
+  border-bottom-color: var(--color-text-primary);
+}
+
+.tab-count {
+  font-weight: 400;
+  color: var(--color-text-tertiary);
+  margin-left: 4px;
+}
+
+.tab.active .tab-count {
+  color: var(--color-text-secondary);
+}
+
+/* ── View toggle ── */
+
+.view-toggle {
+  display: flex;
+  gap: 4px;
+  padding-bottom: 8px;
+}
+
+.view-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 6px;
+  color: var(--color-text-tertiary);
+  background: none;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.view-btn.active,
+.view-btn:hover {
+  color: var(--color-text-primary);
+  border-color: currentColor;
+}
+
+/* ── Registry grid ── */
+
+.registry-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 768px) {
+  .registry-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Car card (grid) ── */
+
+.car-card {
+  border: 0.5px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s;
+}
+
+.car-card:hover {
+  border-color: var(--color-text-tertiary);
+}
+
+.car-card-photo {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  background-color: var(--color-bg-secondary);
+  overflow: hidden;
+}
+
+.car-card-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.car-card-no-photo {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.car-card-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+.car-card-body {
+  padding: 16px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.car-card-chassis {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.car-card-title {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.car-card-meta {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px 16px;
+  margin-top: 4px;
+}
+
+.car-card-meta-label {
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 1px;
+}
+
+.car-card-meta-value {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+}
+
+.car-card-footer {
+  padding: 10px 16px;
+  border-top: 0.5px solid var(--color-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.car-card-owner {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+}
+
+.car-card-cta {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+/* ── Registry list ── */
+
+.registry-list {
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.list-header,
+.list-row {
+  display: grid;
+  grid-template-columns: 120px 48px 54px 1fr 1fr 90px 110px;
+  gap: 16px;
+  align-items: center;
+  padding: 9px 16px;
+}
+
+.list-header {
+  background-color: var(--color-bg-secondary);
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.list-header-cell {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.list-row {
+  border-bottom: 0.5px solid var(--color-border);
+  text-decoration: none;
+  color: inherit;
+  transition: background-color 0.15s;
+}
+
+.list-row:last-child {
+  border-bottom: none;
+}
+
+.list-row:hover {
+  background-color: var(--color-bg-secondary);
+}
+
+.list-cell {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-cell-mono {
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--color-text-primary);
+  font-family: 'SF Mono', 'Monaco', 'Inconsolata', 'Fira Code', monospace;
+}
+
+@media (max-width: 900px) {
+  .list-header { display: none; }
+  .list-row {
+    grid-template-columns: 1fr 1fr;
+    gap: 4px 12px;
+  }
+}
+
+/* ── Car record header ── */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--color-text-tertiary);
+  text-decoration: none;
+  margin-bottom: 24px;
+  transition: color 0.15s;
+}
+
+.back-link:hover {
+  color: var(--color-text-primary);
+}
+
+.car-record-chassis {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 6px;
+}
+
+.car-record-title {
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.car-record-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.car-record-badge-meta {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  padding: 3px 10px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 6px;
+}
+
+/* ── Gallery ── */
+
+.gallery {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 8px;
+  margin-bottom: 48px;
+  border-radius: 12px;
+  overflow: hidden;
+  height: 420px;
+}
+
+.gallery-main {
+  grid-row: 1 / 3;
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+}
+
+.gallery-main img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-thumb {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-bg-secondary);
+  cursor: pointer;
+}
+
+.gallery-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+.gallery-play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.15);
+}
+
+.gallery-no-photos {
+  grid-column: 1 / -1;
+  grid-row: 1 / -1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-bg-secondary);
+  color: var(--color-text-tertiary);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .gallery {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    height: auto;
+  }
+  .gallery-main {
+    grid-row: auto;
+    aspect-ratio: 16/10;
+  }
+  .gallery-thumb {
+    display: none;
+  }
+}
+
+/* ── Car record body ── */
+
+.car-record-body {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .car-record-body {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+}
+
+/* ── Section ── */
+
+.section {
+  margin-bottom: 48px;
+}
+
+.section:last-child {
+  margin-bottom: 0;
+}
+
+.section-heading {
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  padding-bottom: 12px;
+  margin-bottom: 16px;
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.section-body {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+/* ── Timeline ── */
+
+.timeline {
+  display: flex;
+  flex-direction: column;
+}
+
+.timeline-entry {
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  gap: 16px;
+  padding: 10px 0;
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.timeline-entry:last-child {
+  border-bottom: none;
+}
+
+.timeline-year {
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  padding-top: 1px;
+}
+
+.timeline-detail {
+  font-size: 13px;
+  color: var(--color-text-primary);
+  line-height: 1.5;
+}
+
+.timeline-sub {
+  display: block;
+  font-size: 12px;
+  color: var(--color-text-tertiary);
+  margin-top: 2px;
+}
+
+/* ── Know more block ── */
+
+.know-more {
+  background-color: var(--color-bg-secondary);
+  border-radius: 8px;
+  padding: 24px;
+  margin-top: 40px;
+}
+
+.know-more h3 {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.know-more p {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 16px;
+  max-width: 480px;
+}
+
+/* ── Buttons ── */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 6px;
+  font-size: 12px;
+  letter-spacing: 0.06em;
+  color: var(--color-text-primary);
+  background: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: border-color 0.15s;
+  font-family: var(--font-system);
+}
+
+.btn:hover {
+  border-color: var(--color-text-secondary);
+}
+
+.btn-primary {
+  background-color: var(--color-text-primary);
+  color: var(--color-bg-primary);
+  border-color: var(--color-text-primary);
+}
+
+.btn-primary:hover {
+  opacity: 0.85;
+  border-color: var(--color-text-primary);
+}
+
+/* ── Sidebar ── */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  position: sticky;
+  top: 80px;
+}
+
+.sidebar-block {
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.sidebar-block-title {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  padding: 10px 14px;
+  background-color: var(--color-bg-secondary);
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.spec-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 0.5px solid var(--color-border);
+  padding: 7px 14px;
+  gap: 8px;
+}
+
+.spec-row:last-child {
+  border-bottom: none;
+}
+
+.spec-key {
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.spec-value {
+  font-size: 12px;
+  color: var(--color-text-secondary);
+  text-align: right;
+}
+
+.media-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px 14px;
+  border-bottom: 0.5px solid var(--color-border);
+  font-size: 12px;
+  color: var(--color-text-secondary);
+}
+
+.media-row:last-child {
+  border-bottom: none;
+}
+
+.media-icon {
+  color: var(--color-text-tertiary);
+  flex-shrink: 0;
+}
+
+.updated-note {
+  padding: 8px 14px;
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+  letter-spacing: 0.04em;
+}
+
+/* ── Editorial pages ── */
+
+.editorial-hero {
+  max-width: 680px;
+  margin-bottom: 64px;
+}
+
+.editorial-hero h1 {
+  font-size: 28px;
+  font-weight: 500;
+  margin: 8px 0 16px;
+}
+
+.editorial-hero p {
+  color: var(--color-text-secondary);
+  line-height: 1.8;
+}
+
+.editorial-section {
+  padding-top: 48px;
+  border-top: 0.5px solid var(--color-border);
+  margin-bottom: 48px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: start;
+}
+
+.editorial-section.full {
+  grid-template-columns: 1fr;
+  max-width: 680px;
+}
+
+.editorial-section h2 {
+  font-size: 18px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+
+.editorial-section p {
+  color: var(--color-text-secondary);
+  margin-bottom: 12px;
+  line-height: 1.8;
+}
+
+.editorial-section p:last-child {
+  margin-bottom: 0;
+}
+
+.editorial-image-placeholder {
+  aspect-ratio: 4/3;
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  background-color: var(--color-bg-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-tertiary);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  .editorial-section {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+}
+
+/* ── Specs page ── */
+
+.variants-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 64px;
+}
+
+@media (max-width: 900px) {
+  .variants-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .variants-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.variant-card {
+  border: 0.5px solid var(--color-border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.variant-card-header {
+  padding: 16px;
+  background-color: var(--color-bg-secondary);
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.variant-card-model {
+  font-size: 16px;
+  font-weight: 500;
+  margin-bottom: 3px;
+}
+
+.variant-card-years {
+  font-size: 11px;
+  color: var(--color-text-tertiary);
+}
+
+.accordion {
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 12px;
+}
+
+.accordion-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 13px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: var(--color-bg-secondary);
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  color: var(--color-text-primary);
+  font-family: var(--font-system);
+  border-bottom: 0.5px solid transparent;
+  transition: border-color 0.15s;
+}
+
+.accordion-trigger.open {
+  border-bottom-color: var(--color-border);
+}
+
+.accordion-chevron {
+  color: var(--color-text-tertiary);
+  transition: transform 0.2s;
+}
+
+.accordion-trigger.open .accordion-chevron {
+  transform: rotate(180deg);
+}
+
+.accordion-body {
+  padding: 0;
+}
+
+/* ── Racing page ── */
+
+.race-table {
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 32px 0 48px;
+}
+
+.race-header,
+.race-row {
+  display: grid;
+  grid-template-columns: 56px 1fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 10px 16px;
+  align-items: start;
+}
+
+.race-header {
+  background-color: var(--color-bg-secondary);
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.race-header-cell {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.race-row {
+  border-bottom: 0.5px solid var(--color-border);
+  font-size: 13px;
+}
+
+.race-row:last-child {
+  border-bottom: none;
+}
+
+.race-year {
+  color: var(--color-text-tertiary);
+  font-size: 12px;
+}
+
+.race-cell {
+  color: var(--color-text-secondary);
+}
+
+.race-cell-note {
+  color: var(--color-text-tertiary);
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .race-header { display: none; }
+  .race-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* ── Concours page ── */
+
+.concours-table {
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: 32px 0 48px;
+}
+
+.concours-header,
+.concours-row {
+  display: grid;
+  grid-template-columns: 56px 2fr 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 10px 16px;
+  align-items: start;
+}
+
+.concours-header {
+  background-color: var(--color-bg-secondary);
+  border-bottom: 0.5px solid var(--color-border);
+}
+
+.concours-header-cell {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+}
+
+.concours-row {
+  border-bottom: 0.5px solid var(--color-border);
+  font-size: 13px;
+}
+
+.concours-row:last-child {
+  border-bottom: none;
+}
+
+@media (max-width: 768px) {
+  .concours-header { display: none; }
+  .concours-row {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+}
+
+/* ── Contact page ── */
+
+.contact-intro {
+  margin-bottom: 40px;
+  color: var(--color-text-secondary);
+  max-width: 540px;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+}
+
+@media (max-width: 768px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.contact-section-title {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.contact-section-desc {
+  font-size: 13px;
+  color: var(--color-text-secondary);
+  margin-bottom: 24px;
+  line-height: 1.7;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text-tertiary);
+  margin-bottom: 6px;
+}
+
+.form-input,
+.form-textarea {
+  width: 100%;
+  padding: 9px 12px;
+  font-family: var(--font-system);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  background-color: var(--color-bg-primary);
+  border: 0.5px solid var(--color-border);
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.15s;
+  line-height: 1.5;
+}
+
+.form-input:focus,
+.form-textarea:focus {
+  border-color: var(--color-text-secondary);
+}
+
+.form-textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+/* ── Loading / empty ── */
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  color: var(--color-text-tertiary);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+.empty-state {
+  padding: 56px 32px;
+  text-align: center;
+  color: var(--color-text-tertiary);
+  font-size: 13px;
+  border: 0.5px solid var(--color-border);
+  border-radius: 8px;
+}

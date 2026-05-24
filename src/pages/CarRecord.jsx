@@ -1,0 +1,177 @@
+import { useParams, Link, Navigate } from 'react-router-dom'
+import { useRegistry } from '../hooks/useRegistry'
+import StatusBadge from '../components/StatusBadge'
+import Gallery from '../components/Gallery'
+
+function ownerDisplay(car) {
+  if (car.owner === 'known-public' && car.owner_name) return car.owner_name
+  if (car.owner === 'known-public') return 'Known (public)'
+  if (car.owner === 'known-private') return 'Known (private)'
+  return 'Unknown'
+}
+
+function PhotoIcon() {
+  return (
+    <svg className="media-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1">
+      <rect x="1" y="2" width="12" height="10" rx="1.5" />
+      <circle cx="7" cy="7" r="2.5" />
+    </svg>
+  )
+}
+
+function VideoIcon() {
+  return (
+    <svg className="media-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1">
+      <rect x="1" y="2.5" width="9" height="9" rx="1.5" />
+      <path d="M10 5.5l3-2v7l-3-2V5.5z" />
+    </svg>
+  )
+}
+
+function DocIcon() {
+  return (
+    <svg className="media-icon" width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1">
+      <rect x="2" y="1" width="10" height="12" rx="1.5" />
+      <line x1="4" y1="5" x2="10" y2="5" />
+      <line x1="4" y1="7.5" x2="10" y2="7.5" />
+      <line x1="4" y1="10" x2="8" y2="10" />
+    </svg>
+  )
+}
+
+export default function CarRecord() {
+  const { chassis } = useParams()
+  const { cars, loading } = useRegistry()
+
+  if (loading) {
+    return (
+      <main className="page">
+        <div className="loading-state">Loading…</div>
+      </main>
+    )
+  }
+
+  const car = cars.find(c => c.chassis === chassis)
+  if (!car) return <Navigate to="/" replace />
+
+  const specs = [
+    { key: 'Model', value: car.model },
+    { key: 'Year', value: car.year },
+    { key: 'Chassis', value: car.chassis },
+    { key: 'Plate', value: car.plate || '—' },
+    { key: 'Base', value: car.base },
+    { key: 'Color', value: car.color || '—' },
+    { key: 'Engine', value: car.engine || '—' },
+    { key: 'Body', value: car.body || '—' },
+    { key: 'Location', value: car.location || '—' },
+    { key: 'Status', value: car.status ? car.status.charAt(0).toUpperCase() + car.status.slice(1) : '—' },
+    { key: 'Owner', value: ownerDisplay(car) },
+  ]
+
+  return (
+    <main className="page">
+      {/* Back */}
+      <Link to="/" className="back-link">← Registry</Link>
+
+      {/* Header */}
+      <div style={{ marginBottom: 32 }}>
+        <div className="car-record-chassis">{car.chassis} · {car.base}</div>
+        <h1 className="car-record-title">Fiat-Moretti 850 Sportiva {car.model}</h1>
+        <div className="car-record-badges">
+          <StatusBadge status={car.status} />
+          <span className="car-record-badge-meta">{car.year}</span>
+          <span className="car-record-badge-meta">{car.color}</span>
+          <span className="car-record-badge-meta">{car.location}</span>
+          {car.owner !== 'unknown' && (
+            <span className="car-record-badge-meta">Owner known</span>
+          )}
+        </div>
+      </div>
+
+      {/* Gallery */}
+      <Gallery imageUrls={car.imageUrls} videoUrls={car.videoUrls} />
+
+      {/* Body */}
+      <div className="car-record-body">
+        {/* Main column */}
+        <div>
+          {/* Description */}
+          {car.description && (
+            <div className="section">
+              <div className="section-heading">Provenance &amp; description</div>
+              <div className="section-body">{car.description}</div>
+            </div>
+          )}
+
+          {/* History timeline */}
+          {car.historyEntries && car.historyEntries.length > 0 && (
+            <div className="section">
+              <div className="section-heading">Sales &amp; ownership history</div>
+              <div className="timeline">
+                {car.historyEntries.map((entry, i) => (
+                  <div className="timeline-entry" key={i}>
+                    <div className="timeline-year">{entry.year}</div>
+                    <div>
+                      <div className="timeline-detail">{entry.detail}</div>
+                      {entry.sublabel && (
+                        <span className="timeline-sub">{entry.sublabel}</span>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Know more */}
+          <div className="know-more">
+            <h3>Do you know more about this car?</h3>
+            <p>
+              Help us keep this record accurate and complete — earlier ownership
+              history, original registration documents, period photographs.
+            </p>
+            <Link to="/contact" className="btn">Send a message</Link>
+          </div>
+        </div>
+
+        {/* Sidebar */}
+        <aside className="sidebar">
+          {/* Specs */}
+          <div className="sidebar-block">
+            <div className="sidebar-block-title">Specifications</div>
+            {specs.map(({ key, value }) => (
+              <div className="spec-row" key={key}>
+                <span className="spec-key">{key}</span>
+                <span className="spec-value">{value}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Media */}
+          <div className="sidebar-block">
+            <div className="sidebar-block-title">Media</div>
+            <div className="media-row">
+              <PhotoIcon />
+              <span>{car.imageUrls.length} photograph{car.imageUrls.length !== 1 ? 's' : ''}</span>
+            </div>
+            <div className="media-row">
+              <VideoIcon />
+              <span>{car.videoUrls.length} video{car.videoUrls.length !== 1 ? 's' : ''}</span>
+            </div>
+            <div className="media-row">
+              <DocIcon />
+              <span>0 documents</span>
+            </div>
+          </div>
+
+          {/* Updated */}
+          <div className="sidebar-block">
+            <div className="updated-note">
+              Last updated: {car.last_updated || 'unknown'}
+            </div>
+          </div>
+        </aside>
+      </div>
+    </main>
+  )
+}
