@@ -13,12 +13,12 @@ function PlayIcon() {
   )
 }
 
-export default function Gallery({ imageUrls = [], videoUrls = [] }) {
+export default function Gallery({ images = [], videoUrls = [] }) {
   const [lightboxIndex, setLightboxIndex] = useState(null)
 
   const allMedia = [
-    ...imageUrls.map(u => ({ type: 'image', url: u })),
-    ...videoUrls.map(u => ({ type: 'video', url: u })),
+    ...images.map(i => ({ type: 'image', url: i.url, caption: i.caption })),
+    ...videoUrls.map(u => ({ type: 'video', url: u, caption: '' })),
   ]
 
   if (allMedia.length === 0) {
@@ -74,6 +74,12 @@ export default function Gallery({ imageUrls = [], videoUrls = [] }) {
         })}
 
         {/* Fill empty thumb slots */}
+        {allMedia.length === 1 && (
+          <>
+            <div className="gallery-thumb" style={{ background: 'var(--color-bg-secondary)' }} />
+            <div className="gallery-thumb" style={{ background: 'var(--color-bg-secondary)' }} />
+          </>
+        )}
         {thumbs.length === 0 && (
           <>
             <div className="gallery-thumb" style={{ background: 'var(--color-bg-secondary)' }} />

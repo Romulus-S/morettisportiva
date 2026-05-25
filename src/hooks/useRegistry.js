@@ -63,11 +63,20 @@ function parseList(str) {
   return str.split(',').map(s => s.trim()).filter(Boolean)
 }
 
+function parseImages(str) {
+  if (!str || !str.trim()) return []
+  return str.split(',').map(s => {
+    const [url, caption = ''] = s.trim().split('|')
+    return { url: url.trim(), caption: caption.trim() }
+  }).filter(item => item.url)
+}
+
 function processCar(car) {
   return {
     ...car,
     historyEntries: parseHistory(car.history),
-    imageUrls: parseList(car.images),
+    images: parseImages(car.images),
+    imageUrls: parseImages(car.images).map(i => i.url),
     videoUrls: parseList(car.videos),
   }
 }

@@ -96,7 +96,7 @@ export default function CarRecord() {
       </div>
 
       {/* Gallery */}
-      <Gallery imageUrls={car.imageUrls} videoUrls={car.videoUrls} />
+      <Gallery images={car.images} videoUrls={car.videoUrls} />
 
       {/* Body */}
       <div className="car-record-body">

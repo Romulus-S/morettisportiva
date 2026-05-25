@@ -70,6 +70,11 @@ export default function Lightbox({ media, startIndex = 0, onClose }) {
           </>
         )}
 
+        {/* Caption */}
+        {current.caption && (
+          <div className="lightbox-caption">{current.caption}</div>
+        )}
+
         {/* Filmstrip */}
         {media.length > 1 && (
           <div className="lightbox-strip" ref={stripRef}>
