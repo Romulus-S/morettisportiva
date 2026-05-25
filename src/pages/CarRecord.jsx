@@ -119,9 +119,9 @@ export default function CarRecord() {
                   <div className="timeline-entry" key={i}>
                     <div className="timeline-year">{entry.year}</div>
                     <div>
-                      <div className="timeline-detail">{entry.detail}</div>
+                      <div className="timeline-detail">{parseDescription(entry.detail)}</div>
                       {entry.sublabel && (
-                        <span className="timeline-sub">{entry.sublabel}</span>
+                        <span className="timeline-sub">{parseDescription(entry.sublabel)}</span>
                       )}
                     </div>
                   </div>
