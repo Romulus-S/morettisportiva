@@ -1,4 +1,15 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
+
+function parseDescription(text) {
+  const parts = text.split(/(\[[^\]]+\]\(https?:\/\/[^)]+\))/g)
+  return parts.map((part, i) => {
+    const match = part.match(/^\[([^\]]+)\]\((https?:\/\/[^)]+)\)$/)
+    if (match) {
+      return <a key={i} href={match[2]} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{match[1]}</a>
+    }
+    return part
+  })
+}
 import { useRegistry } from '../hooks/useRegistry'
 import StatusBadge from '../components/StatusBadge'
 import Gallery from '../components/Gallery'
@@ -98,7 +109,7 @@ export default function CarRecord() {
           {car.description && (
             <div className="section">
               <div className="section-heading">Provenance &amp; description</div>
-              <div className="section-body">{car.description}</div>
+              <div className="section-body">{parseDescription(car.description)}</div>
             </div>
           )}
 
