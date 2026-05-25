@@ -1,8 +1,9 @@
-import { useEffect, useState } from 'react'
-import { cloudinaryImage } from '../utils/cloudinary'
+import { useEffect, useState, useRef } from 'react'
+import { cloudinaryImage, cloudinaryThumb } from '../utils/cloudinary'
 
 export default function Lightbox({ media, startIndex = 0, onClose }) {
   const [index, setIndex] = useState(startIndex)
+  const stripRef = useRef(null)
 
   useEffect(() => {
     function onKey(e) {
@@ -14,11 +15,20 @@ export default function Lightbox({ media, startIndex = 0, onClose }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [media.length, onClose])
 
+  // Scroll active thumb into view
+  useEffect(() => {
+    const strip = stripRef.current
+    if (!strip) return
+    const active = strip.children[index]
+    if (active) active.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' })
+  }, [index])
+
   const current = media[index]
 
   return (
     <div className="lightbox-backdrop" onClick={onClose}>
       <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
+
         {/* Close */}
         <button className="lightbox-close" onClick={onClose} aria-label="Close">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.2">
@@ -27,7 +37,7 @@ export default function Lightbox({ media, startIndex = 0, onClose }) {
           </svg>
         </button>
 
-        {/* Image */}
+        {/* Main image */}
         <div className="lightbox-media">
           {current.type === 'image' ? (
             <img src={cloudinaryImage(current.url)} alt={`Photo ${index + 1}`} />
@@ -36,7 +46,7 @@ export default function Lightbox({ media, startIndex = 0, onClose }) {
           )}
         </div>
 
-        {/* Nav */}
+        {/* Prev / Next */}
         {media.length > 1 && (
           <>
             <button
@@ -60,8 +70,29 @@ export default function Lightbox({ media, startIndex = 0, onClose }) {
           </>
         )}
 
-        {/* Counter */}
-        <div className="lightbox-counter">{index + 1} / {media.length}</div>
+        {/* Filmstrip */}
+        {media.length > 1 && (
+          <div className="lightbox-strip" ref={stripRef}>
+            {media.map((m, i) => (
+              <button
+                key={i}
+                className={`lightbox-strip-thumb ${i === index ? 'active' : ''}`}
+                onClick={() => setIndex(i)}
+                aria-label={`Go to photo ${i + 1}`}
+              >
+                {m.type === 'image' ? (
+                  <img src={cloudinaryThumb(m.url)} alt="" />
+                ) : (
+                  <div className="lightbox-strip-video">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                      <path d="M5 3.5l8 4.5-8 4.5V3.5z" fill="rgba(255,255,255,0.8)" />
+                    </svg>
+                  </div>
+                )}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )
