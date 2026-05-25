@@ -1,14 +1,11 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 
 function parseDescription(text) {
-  const parts = text.split(/(\[[^\]]+\]\(https?:\/\/[^)]+\))/g)
-  return parts.map((part, i) => {
-    const match = part.match(/^\[([^\]]+)\]\((https?:\/\/[^)]+)\)$/)
-    if (match) {
-      return <a key={i} href={match[2]} target="_blank" rel="noopener noreferrer" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '3px' }}>{match[1]}</a>
-    }
-    return part
-  })
+  const html = text.replace(
+    /\[([^\]]+)\]\((https?:\/\/[^)\s]+)\)/g,
+    '<a href="$2" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:underline;text-underline-offset:3px">$1</a>'
+  )
+  return <span dangerouslySetInnerHTML={{ __html: html }} />
 }
 import { useRegistry } from '../hooks/useRegistry'
 import StatusBadge from '../components/StatusBadge'
