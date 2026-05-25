@@ -1,4 +1,6 @@
-import { cloudinaryImage, cloudinaryThumb, cloudinaryVideo } from '../utils/cloudinary'
+import { useState } from 'react'
+import { cloudinaryImage, cloudinaryThumb } from '../utils/cloudinary'
+import Lightbox from './Lightbox'
 
 function PlayIcon() {
   return (
@@ -12,6 +14,8 @@ function PlayIcon() {
 }
 
 export default function Gallery({ imageUrls = [], videoUrls = [] }) {
+  const [lightboxIndex, setLightboxIndex] = useState(null)
+
   const allMedia = [
     ...imageUrls.map(u => ({ type: 'image', url: u })),
     ...videoUrls.map(u => ({ type: 'video', url: u })),
@@ -30,49 +34,64 @@ export default function Gallery({ imageUrls = [], videoUrls = [] }) {
   const extra = allMedia.length - 3
 
   return (
-    <div className="gallery">
-      {/* Main */}
-      <div className="gallery-main">
-        {main.type === 'image' ? (
-          <img
-            src={cloudinaryImage(main.url)}
-            alt="Primary view"
-          />
-        ) : (
-          <div style={{ position: 'relative', width: '100%', height: '100%', background: '#111' }}>
-            <PlayIcon />
-          </div>
+    <>
+      <div className="gallery">
+        {/* Main */}
+        <div
+          className="gallery-main"
+          style={{ cursor: 'pointer' }}
+          onClick={() => setLightboxIndex(0)}
+        >
+          {main.type === 'image' ? (
+            <img src={cloudinaryImage(main.url)} alt="Primary view" />
+          ) : (
+            <div style={{ position: 'relative', width: '100%', height: '100%', background: '#111' }}>
+              <PlayIcon />
+            </div>
+          )}
+        </div>
+
+        {/* Thumbs */}
+        {thumbs.map((media, i) => {
+          const isLast = i === thumbs.length - 1 && extra > 0
+          return (
+            <div
+              className="gallery-thumb"
+              key={i}
+              onClick={() => setLightboxIndex(i + 1)}
+            >
+              {media.type === 'image' ? (
+                <img src={cloudinaryThumb(media.url)} alt={`View ${i + 2}`} loading="lazy" />
+              ) : (
+                <div style={{ width: '100%', height: '100%', background: '#111' }} />
+              )}
+              {media.type === 'video' && !isLast && <PlayIcon />}
+              {isLast && (
+                <div className="gallery-overlay">+{extra + 1} photos</div>
+              )}
+            </div>
+          )
+        })}
+
+        {/* Fill empty thumb slots */}
+        {thumbs.length === 0 && (
+          <>
+            <div className="gallery-thumb" style={{ background: 'var(--color-bg-secondary)' }} />
+            <div className="gallery-thumb" style={{ background: 'var(--color-bg-secondary)' }} />
+          </>
+        )}
+        {thumbs.length === 1 && (
+          <div className="gallery-thumb" style={{ background: 'var(--color-bg-secondary)' }} />
         )}
       </div>
 
-      {/* Thumbs */}
-      {thumbs.map((media, i) => {
-        const isLast = i === thumbs.length - 1 && extra > 0
-        return (
-          <div className="gallery-thumb" key={i}>
-            {media.type === 'image' ? (
-              <img src={cloudinaryThumb(media.url)} alt={`View ${i + 2}`} loading="lazy" />
-            ) : (
-              <div style={{ width: '100%', height: '100%', background: '#111' }} />
-            )}
-            {media.type === 'video' && !isLast && <PlayIcon />}
-            {isLast && (
-              <div className="gallery-overlay">+{extra + 1} photos</div>
-            )}
-          </div>
-        )
-      })}
-
-      {/* If only 1 media item, fill the thumb slots */}
-      {thumbs.length === 0 && (
-        <>
-          <div className="gallery-thumb" style={{ background: 'var(--color-bg-secondary)' }} />
-          <div className="gallery-thumb" style={{ background: 'var(--color-bg-secondary)' }} />
-        </>
+      {lightboxIndex !== null && (
+        <Lightbox
+          media={allMedia}
+          startIndex={lightboxIndex}
+          onClose={() => setLightboxIndex(null)}
+        />
       )}
-      {thumbs.length === 1 && (
-        <div className="gallery-thumb" style={{ background: 'var(--color-bg-secondary)' }} />
-      )}
-    </div>
+    </>
   )
 }

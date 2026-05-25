@@ -59,7 +59,6 @@ export default function CarRecord() {
     { key: 'Year', value: car.year },
     { key: 'Chassis', value: car.chassis },
     { key: 'Plate', value: car.plate || '—' },
-    { key: 'Base', value: car.base },
     { key: 'Color', value: car.color || '—' },
     { key: 'Engine', value: car.engine || '—' },
     { key: 'Body', value: car.body || '—' },
@@ -75,7 +74,7 @@ export default function CarRecord() {
 
       {/* Header */}
       <div style={{ marginBottom: 32 }}>
-        <div className="car-record-chassis">{car.chassis} · {car.base}</div>
+        <div className="car-record-chassis">{car.chassis}</div>
         <h1 className="car-record-title">Fiat-Moretti 850 Sportiva {car.model}</h1>
         <div className="car-record-badges">
           <StatusBadge status={car.status} />
