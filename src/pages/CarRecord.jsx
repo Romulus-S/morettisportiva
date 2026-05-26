@@ -69,7 +69,6 @@ export default function CarRecord() {
     { key: 'Plate', value: car.plate || '—' },
     { key: 'Color', value: car.color || '—' },
     { key: 'Engine', value: car.engine || '—' },
-    { key: 'Body', value: car.body || '—' },
     { key: 'Location', value: car.location || '—' },
     { key: 'Status', value: car.status ? car.status.charAt(0).toUpperCase() + car.status.slice(1) : '—' },
     { key: 'Owner', value: ownerDisplay(car) },
