@@ -80,21 +80,19 @@ export default function CarRecord() {
       <Link to="/" className="back-link">← Registry</Link>
 
       {/* Header */}
-      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '48px', alignItems: 'start', marginBottom: 32 }}>
-        <div>
-          <div className="car-record-chassis">{car.chassis}</div>
-          <h1 className="car-record-title">Fiat-Moretti 850 Sportiva {car.model}</h1>
-          <div className="car-record-badges">
-            <StatusBadge status={car.status} />
-            <span className="car-record-badge-meta">{car.year}</span>
-            <span className="car-record-badge-meta">{car.color}</span>
-            <span className="car-record-badge-meta">{car.location}</span>
-            {car.owner !== 'unknown' && (
-              <span className="car-record-badge-meta">Owner known</span>
-            )}
-          </div>
+      <div style={{ position: 'relative', marginBottom: 32 }}>
+        <div className="car-record-chassis">{car.chassis}</div>
+        <h1 className="car-record-title">Fiat-Moretti 850 Sportiva {car.model}</h1>
+        <div className="car-record-badges">
+          <StatusBadge status={car.status} />
+          <span className="car-record-badge-meta">{car.year}</span>
+          <span className="car-record-badge-meta">{car.color}</span>
+          <span className="car-record-badge-meta">{car.location}</span>
+          {car.owner !== 'unknown' && (
+            <span className="car-record-badge-meta">Owner known</span>
+          )}
         </div>
-        <div className="know-more">
+        <div className="know-more" style={{ position: 'absolute', top: 0, right: 0, width: '28%' }}>
           <h3>Do you know more about this car?</h3>
           <Link to="/contact" className="btn" style={{ marginTop: 12 }}>Contact</Link>
         </div>
