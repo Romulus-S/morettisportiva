@@ -117,7 +117,7 @@ export default function CarRecord() {
           {/* History timeline */}
           {car.historyEntries && car.historyEntries.length > 0 && (
             <div className="section">
-              <div className="section-heading">Sales &amp; ownership history</div>
+              <div className="section-heading">Chassis history</div>
               <div className="timeline">
                 {car.historyEntries.map((entry, i) => (
                   <div className="timeline-entry" key={i}>
