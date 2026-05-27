@@ -1,3 +1,8 @@
+export function maskChassis(chassis) {
+  if (!chassis) return ''
+  return chassis.replace(/[A-Za-z0-9]/g, '*')
+}
+
 /**
  * Insert Cloudinary transformation params after /upload/ in a URL.
  * The base URL stored in the sheet is the full URL including the file path.

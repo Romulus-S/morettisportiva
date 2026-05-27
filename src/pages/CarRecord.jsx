@@ -1,4 +1,5 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
+import { maskChassis } from '../utils/cloudinary'
 
 function parseDescription(text) {
   const html = text.replace(
@@ -65,7 +66,7 @@ export default function CarRecord() {
   const specs = [
     { key: 'Model', value: car.model },
     { key: 'Year', value: car.year },
-    { key: 'Chassis', value: car.chassis },
+    { key: 'Chassis', value: maskChassis(car.chassis) },
     { key: 'Plate', value: car.plate || '—' },
     { key: 'Color', value: car.color || '—' },
     { key: 'Engine', value: car.engine || '—' },
@@ -81,7 +82,7 @@ export default function CarRecord() {
 
       {/* Header */}
       <div style={{ position: 'relative', marginBottom: 32 }}>
-        <div className="car-record-chassis">{car.chassis}</div>
+        <div className="car-record-chassis">{maskChassis(car.chassis)}</div>
         <h1 className="car-record-title">Fiat-Moretti 850 Sportiva {car.model}</h1>
         <div className="car-record-badges">
           <StatusBadge status={car.status} />

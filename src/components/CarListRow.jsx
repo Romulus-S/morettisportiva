@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import StatusBadge from './StatusBadge'
+import { maskChassis } from '../utils/cloudinary'
 
 function ownerShort(owner) {
   if (owner === 'known-public' || owner === 'known-private') return 'Known'
@@ -9,7 +10,7 @@ function ownerShort(owner) {
 export default function CarListRow({ car }) {
   return (
     <Link to={`/registry/${car.chassis}`} className="list-row">
-      <span className="list-cell list-cell-mono">{car.chassis}</span>
+      <span className="list-cell list-cell-mono">{maskChassis(car.chassis)}</span>
       <span className="list-cell">{car.model}</span>
       <span className="list-cell">{car.year}</span>
       <span className="list-cell">{car.color || '—'}</span>

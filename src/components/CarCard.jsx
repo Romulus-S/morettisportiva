@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import StatusBadge from './StatusBadge'
-import { cloudinaryImage } from '../utils/cloudinary'
+import { cloudinaryImage, maskChassis } from '../utils/cloudinary'
 
 function ownerLabel(owner) {
   if (owner === 'known-public') return 'Owner known'
@@ -27,7 +27,7 @@ export default function CarCard({ car }) {
       </div>
 
       <div className="car-card-body">
-        <div className="car-card-chassis">{car.chassis}</div>
+        <div className="car-card-chassis">{maskChassis(car.chassis)}</div>
         <div className="car-card-title">
           {car.year} · {car.model}
         </div>
