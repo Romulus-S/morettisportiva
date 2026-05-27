@@ -70,7 +70,7 @@ export default function Registry() {
       <div className="stats-row">
         <div className="stat-card">
           <div className="stat-value">{stats.total}</div>
-          <div className="stat-label">Cars documented</div>
+          <div className="stat-label">Cars documented*</div>
         </div>
         <div className="stat-card">
           <div className="stat-value">{stats.located}</div>
@@ -81,6 +81,12 @@ export default function Registry() {
           <div className="stat-label">Owner known</div>
         </div>
       </div>
+      <p style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 10, marginBottom: 32 }}>
+        *This is most likely an overcount due to repeats.{' '}
+        <Link to="/contact" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
+          Please share your knowledge to improve this number.
+        </Link>
+      </p>
 
       {/* Tabs + view toggle */}
       <div className="tabs-bar">
