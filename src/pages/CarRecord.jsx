@@ -80,17 +80,27 @@ export default function CarRecord() {
       <Link to="/" className="back-link">← Registry</Link>
 
       {/* Header */}
-      <div style={{ marginBottom: 32 }}>
-        <div className="car-record-chassis">{car.chassis}</div>
-        <h1 className="car-record-title">Fiat-Moretti 850 Sportiva {car.model}</h1>
-        <div className="car-record-badges">
-          <StatusBadge status={car.status} />
-          <span className="car-record-badge-meta">{car.year}</span>
-          <span className="car-record-badge-meta">{car.color}</span>
-          <span className="car-record-badge-meta">{car.location}</span>
-          {car.owner !== 'unknown' && (
-            <span className="car-record-badge-meta">Owner known</span>
-          )}
+      <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: '48px', alignItems: 'start', marginBottom: 32 }}>
+        <div>
+          <div className="car-record-chassis">{car.chassis}</div>
+          <h1 className="car-record-title">Fiat-Moretti 850 Sportiva {car.model}</h1>
+          <div className="car-record-badges">
+            <StatusBadge status={car.status} />
+            <span className="car-record-badge-meta">{car.year}</span>
+            <span className="car-record-badge-meta">{car.color}</span>
+            <span className="car-record-badge-meta">{car.location}</span>
+            {car.owner !== 'unknown' && (
+              <span className="car-record-badge-meta">Owner known</span>
+            )}
+          </div>
+        </div>
+        <div className="know-more">
+          <h3>Do you know more about this car?</h3>
+          <p>
+            Help us keep this record accurate and complete — earlier ownership
+            history, original registration documents, period photographs.
+          </p>
+          <Link to="/contact" className="btn">Send a message</Link>
         </div>
       </div>
 
@@ -129,15 +139,6 @@ export default function CarRecord() {
             </div>
           )}
 
-          {/* Know more */}
-          <div className="know-more">
-            <h3>Do you know more about this car?</h3>
-            <p>
-              Help us keep this record accurate and complete — earlier ownership
-              history, original registration documents, period photographs.
-            </p>
-            <Link to="/contact" className="btn">Send a message</Link>
-          </div>
         </div>
 
         {/* Sidebar */}
