@@ -29,7 +29,7 @@ export default function CarCard({ car }) {
       <div className="car-card-body">
         <div className="car-card-chassis">{car.chassis}</div>
         <div className="car-card-title">
-          {car.model} · {car.year}
+          {car.year} · {car.model}
         </div>
         <div className="car-card-meta">
           <div>
