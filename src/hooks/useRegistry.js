@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import Papa from 'papaparse'
+import { chassisToSlug } from '../utils/cloudinary'
 
 const SAMPLE_DATA = [
   {
@@ -72,11 +73,13 @@ function parseImages(str) {
 }
 
 function processCar(car) {
+  const parsed = parseImages(car.images)
   return {
     ...car,
+    slug: chassisToSlug(car.chassis),
     historyEntries: parseHistory(car.history),
-    images: parseImages(car.images),
-    imageUrls: parseImages(car.images).map(i => i.url),
+    images: parsed,
+    imageUrls: parsed.map(i => i.url),
     videoUrls: parseList(car.videos),
   }
 }

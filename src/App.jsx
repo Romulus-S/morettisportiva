@@ -15,7 +15,7 @@ function App() {
       <Nav />
       <Routes>
         <Route path="/" element={<Registry />} />
-        <Route path="/registry/:chassis" element={<CarRecord />} />
+        <Route path="/registry/:slug" element={<CarRecord />} />
         <Route path="/design" element={<Design />} />
         <Route path="/specs" element={<Specs />} />
         <Route path="/racing" element={<Racing />} />

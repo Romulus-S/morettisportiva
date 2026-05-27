@@ -14,7 +14,7 @@ export default function CarCard({ car }) {
     : null
 
   return (
-    <Link to={`/registry/${car.chassis}`} className="car-card">
+    <Link to={`/registry/${car.slug}`} className="car-card">
       <div className="car-card-photo">
         {firstImage ? (
           <img src={firstImage} alt={`${car.model} · ${car.chassis}`} loading="lazy" />

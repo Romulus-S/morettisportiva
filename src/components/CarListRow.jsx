@@ -9,7 +9,7 @@ function ownerShort(owner) {
 
 export default function CarListRow({ car }) {
   return (
-    <Link to={`/registry/${car.chassis}`} className="list-row">
+    <Link to={`/registry/${car.slug}`} className="list-row">
       <span className="list-cell list-cell-mono">{maskChassis(car.chassis)}</span>
       <span className="list-cell">{car.model}</span>
       <span className="list-cell">{car.year}</span>

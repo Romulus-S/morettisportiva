@@ -1,3 +1,11 @@
+export function chassisToSlug(chassis) {
+  let hash = 5381
+  for (let i = 0; i < chassis.length; i++) {
+    hash = Math.imul(hash, 31) + chassis.charCodeAt(i) | 0
+  }
+  return Math.abs(hash).toString().padStart(8, '0')
+}
+
 export function maskChassis(chassis) {
   if (!chassis) return ''
   return chassis.replace(/[A-Za-z0-9]/g, '*')

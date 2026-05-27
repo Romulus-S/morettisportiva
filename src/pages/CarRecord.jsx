@@ -49,7 +49,7 @@ function DocIcon() {
 }
 
 export default function CarRecord() {
-  const { chassis } = useParams()
+  const { slug } = useParams()
   const { cars, loading } = useRegistry()
 
   if (loading) {
@@ -60,7 +60,7 @@ export default function CarRecord() {
     )
   }
 
-  const car = cars.find(c => c.chassis === chassis)
+  const car = cars.find(c => c.slug === slug)
   if (!car) return <Navigate to="/" replace />
 
   const specs = [
