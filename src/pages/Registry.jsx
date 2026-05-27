@@ -74,7 +74,7 @@ export default function Registry() {
         </div>
         <div className="stat-card">
           <div className="stat-value">{stats.located}</div>
-          <div className="stat-label">Currently located</div>
+          <div className="stat-label">Location known</div>
         </div>
         <div className="stat-card">
           <div className="stat-value">{stats.ownerKnown}</div>
