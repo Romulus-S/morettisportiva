@@ -83,7 +83,7 @@ export default function Registry() {
         </div>
       </div>
       <p style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 10, marginBottom: 32 }}>
-        *This is most likely an overcount due to repeats.{' '}
+        *This is most likely an overcount due to repeats and survivorship.{' '}
         <Link to="/contact" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
           Please share your knowledge to improve this number.
         </Link>
