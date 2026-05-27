@@ -63,12 +63,7 @@ export default function Registry() {
       {/* Hero */}
       <div className="registry-hero">
         <div className="label">The definitive archive</div>
-        <h1>Fiat-Moretti 850 Sportiva</h1>
-        <p>
-          A complete registry of every known Sportiva — S1, S2, S4, and Targa.
-          Built from primary sources, firsthand inspection, and original documentation.
-          Updated as new cars surface.
-        </p>
+        <h1>Moretti Sportiva</h1>
       </div>
 
       {/* Stats */}
