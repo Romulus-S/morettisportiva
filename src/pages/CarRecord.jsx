@@ -92,9 +92,9 @@ export default function CarRecord() {
             <span className="car-record-badge-meta">Owner known</span>
           )}
         </div>
-        <div className="know-more" style={{ position: 'absolute', top: 0, right: 0, width: '28%' }}>
-          <h3>Do you know more about this car?</h3>
-          <Link to="/contact" className="btn" style={{ marginTop: 12 }}>Contact</Link>
+        <div style={{ position: 'absolute', top: 0, right: 0, display: 'flex', alignItems: 'center', gap: 16, padding: '10px 14px', border: '0.5px solid var(--color-border)', borderRadius: 8, background: 'var(--color-bg-secondary)' }}>
+          <span style={{ fontSize: 13, fontWeight: 500 }}>Do you know more about this car?</span>
+          <Link to="/contact" className="btn">Contact</Link>
         </div>
       </div>
 
