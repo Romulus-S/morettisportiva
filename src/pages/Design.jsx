@@ -94,7 +94,7 @@ export default function Design() {
 
       <div className="editorial-section">
         <div>
-          <h2>Targa — the open variant</h2>
+          <h2>Convertibile &amp; Trasformabile — the open variants</h2>
           <p>
             The Targa-bodied Sportiva followed the Porsche-inspired removable roof panel
             convention that had become fashionable in Italy by the late 1960s. A fixed

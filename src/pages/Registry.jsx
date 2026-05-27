@@ -3,7 +3,7 @@ import { useRegistry } from '../hooks/useRegistry'
 import CarCard from '../components/CarCard'
 import CarListRow from '../components/CarListRow'
 
-const MODELS = ['All', 'S1', 'S2', 'S4', 'Targa']
+const MODELS = ['All', 'S1', 'S2', 'S4', 'Convertibile', 'Trasformabile']
 
 function GridIcon() {
   return (
