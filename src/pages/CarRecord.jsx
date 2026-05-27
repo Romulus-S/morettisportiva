@@ -96,11 +96,7 @@ export default function CarRecord() {
         </div>
         <div className="know-more">
           <h3>Do you know more about this car?</h3>
-          <p>
-            Help us keep this record accurate and complete — earlier ownership
-            history, original registration documents, period photographs.
-          </p>
-          <Link to="/contact" className="btn">Send a message</Link>
+          <Link to="/contact" className="btn" style={{ marginTop: 12 }}>Contact</Link>
         </div>
       </div>
 
