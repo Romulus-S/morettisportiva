@@ -7,6 +7,7 @@ const LINKS = [
   { to: '/specs', label: 'Specs' },
   { to: '/racing', label: 'Racing' },
   { to: '/concours', label: 'Concours' },
+  { to: '/for-sale', label: 'For sale' },
   { to: '/contact', label: 'Contact' },
 ]
 

@@ -6,6 +6,7 @@ import Design from './pages/Design'
 import Specs from './pages/Specs'
 import Racing from './pages/Racing'
 import Concours from './pages/Concours'
+import ForSale from './pages/ForSale'
 import Contact from './pages/Contact'
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
         <Route path="/specs" element={<Specs />} />
         <Route path="/racing" element={<Racing />} />
         <Route path="/concours" element={<Concours />} />
+        <Route path="/for-sale" element={<ForSale />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>
