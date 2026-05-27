@@ -148,24 +148,7 @@ export default function CarRecord() {
             ))}
           </div>
 
-          {/* Media */}
-          <div className="sidebar-block">
-            <div className="sidebar-block-title">Media</div>
-            <div className="media-row">
-              <PhotoIcon />
-              <span>{car.imageUrls.length} photograph{car.imageUrls.length !== 1 ? 's' : ''}</span>
-            </div>
-            <div className="media-row">
-              <VideoIcon />
-              <span>{car.videoUrls.length} video{car.videoUrls.length !== 1 ? 's' : ''}</span>
-            </div>
-            <div className="media-row">
-              <DocIcon />
-              <span>0 documents</span>
-            </div>
-          </div>
-
-          {/* Updated */}
+{/* Updated */}
           <div className="sidebar-block">
             <div className="updated-note">
               Last updated: {car.last_updated || 'unknown'}
