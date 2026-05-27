@@ -1,4 +1,5 @@
 import { useState, useMemo } from 'react'
+import { Link } from 'react-router-dom'
 import { useRegistry } from '../hooks/useRegistry'
 import CarCard from '../components/CarCard'
 import CarListRow from '../components/CarListRow'
