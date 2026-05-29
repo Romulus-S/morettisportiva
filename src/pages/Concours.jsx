@@ -51,7 +51,7 @@ const ENTRIES = [
     location: 'Greenwich, CT, USA',
     result: null,
     carYear: null,
-    carModel: null,
+    carModel: 'S2',
     chassis: null,
     image: '/images/concours-greenwich.png',
   },
