@@ -47,6 +47,7 @@ export default function Nav() {
           <span />
           <span />
           <span />
+          <span className="nav-hamburger-label">{open ? 'Close' : 'Menu'}</span>
         </button>
       </nav>
 

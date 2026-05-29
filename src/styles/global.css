@@ -298,9 +298,17 @@ button {
 
 .nav-hamburger span {
   display: block;
-  width: 22px;
-  height: 0.5px;
+  width: 20px;
+  height: 1.5px;
   background-color: var(--color-text-primary);
+}
+
+.nav-hamburger-label {
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--color-text-primary);
+  margin-left: 6px;
 }
 
 .nav-mobile {
