@@ -428,17 +428,10 @@ button {
 /* ── Registry mobile promo ── */
 
 .registry-mobile-promo {
-  display: none;
   font-size: 13px;
   color: var(--color-text-secondary);
   line-height: 1.7;
   margin-bottom: 20px;
-}
-
-@media (max-width: 768px) {
-  .registry-mobile-promo {
-    display: block;
-  }
 }
 
 /* ── Stats row ── */
