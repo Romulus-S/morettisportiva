@@ -6,6 +6,7 @@ const ENTRIES = [
     event: 'Targa Florio',
     location: 'Sicily, Italy',
     carModel: '1000 SS',
+    drivers: 'Sastri - G. Parla',
     result: '1st in class',
     image: '/images/racing-targa1967.jpg',
   },
@@ -14,6 +15,7 @@ const ENTRIES = [
     event: 'Targa Florio',
     location: 'Sicily, Italy',
     carModel: '1000 SS',
+    drivers: 'G. Parla - Del Sette',
     result: null,
     image: '/images/racing-targa1968.jpg',
   },
@@ -22,6 +24,7 @@ const ENTRIES = [
     event: 'Monte Carlo Rally',
     location: 'Monte-Carlo',
     carModel: 'S1',
+    drivers: 'R. Rue / M.-C. Rue',
     result: null,
     image: '/images/racing-rallye.jpg',
   },
@@ -44,6 +47,10 @@ function RacingCard({ entry }) {
           <div>
             <div className="car-card-meta-label">Car</div>
             <div className="car-card-meta-value">{entry.carModel}</div>
+          </div>
+          <div>
+            <div className="car-card-meta-label">Drivers</div>
+            <div className="car-card-meta-value">{entry.drivers}</div>
           </div>
           {entry.result && (
             <div>
