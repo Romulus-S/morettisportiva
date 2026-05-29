@@ -782,7 +782,7 @@ button {
     padding: 10px 12px;
   }
   .car-record-know-more span {
-    font-size: 14px;
+    font-size: 0.84em;
     white-space: nowrap;
   }
 }
