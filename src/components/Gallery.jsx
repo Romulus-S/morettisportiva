@@ -91,6 +91,33 @@ export default function Gallery({ images = [], videoUrls = [] }) {
         )}
       </div>
 
+      {/* Mobile filmstrip */}
+      {allMedia.length > 1 && (
+        <div className="gallery-mobile-strip">
+          {allMedia.map((media, i) => {
+            const isLast = i === allMedia.length - 1
+            return (
+              <div
+                key={i}
+                className="gallery-mobile-thumb"
+                onClick={() => setLightboxIndex(i)}
+              >
+                {media.type === 'image' ? (
+                  <img src={cloudinaryThumb(media.url)} alt={`View ${i + 1}`} loading="lazy" />
+                ) : (
+                  <div style={{ width: '100%', height: '100%', background: '#111', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    <PlayIcon />
+                  </div>
+                )}
+                {isLast && allMedia.length > 2 && (
+                  <div className="gallery-mobile-count">{allMedia.length}</div>
+                )}
+              </div>
+            )
+          })}
+        </div>
+      )}
+
       {lightboxIndex !== null && (
         <Lightbox
           media={allMedia}
