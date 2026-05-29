@@ -809,10 +809,10 @@ button {
 
 .car-record-badges {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 8px;
   align-items: center;
-  overflow: hidden;
+  justify-content: center;
 }
 
 .car-record-badge-meta {
