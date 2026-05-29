@@ -56,16 +56,6 @@ const ENTRIES = [
     image: '/images/concours-greenwich.png',
   },
   {
-    event: 'Tour Auto',
-    year: '2020 & 2021',
-    location: 'France',
-    result: 'Car #44',
-    carYear: '1968',
-    carModel: null,
-    chassis: null,
-    image: '/images/concours-tourauto1.jpg',
-  },
-  {
     event: 'Pebble Beach Concours d\'Elegance',
     year: '2025',
     location: 'Pebble Beach, CA, USA',
@@ -74,6 +64,16 @@ const ENTRIES = [
     carModel: 'S1 SS',
     chassis: null,
     image: '/images/concours-pebblebeach2.png',
+  },
+  {
+    event: 'Tour Auto',
+    year: '2020 & 2021',
+    location: 'France',
+    result: null,
+    carYear: '1968',
+    carModel: null,
+    chassis: null,
+    image: '/images/concours-tourauto1.jpg',
   },
   {
     event: 'Classic Gala Schwetzingen',
