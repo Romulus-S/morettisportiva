@@ -93,7 +93,7 @@ export default function CarRecord() {
           )}
         </div>
         <div className="car-record-know-more">
-          <span style={{ fontSize: 15, fontWeight: 500 }}>Do you know more about this car?</span>
+          <span style={{ fontWeight: 500 }}>Do you know more about this car?</span>
           <Link to="/contact" className="btn">Contact</Link>
         </div>
       </div>
