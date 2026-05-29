@@ -42,9 +42,11 @@ export default function Nav() {
           onClick={() => setOpen(o => !o)}
           aria-label={open ? 'Close menu' : 'Open menu'}
         >
-          <span />
-          <span />
-          <span />
+          <div className="nav-hamburger-lines">
+            <span />
+            <span />
+            <span />
+          </div>
           <span className="nav-hamburger-label">{open ? 'Close' : 'Menu'}</span>
         </button>
       </nav>

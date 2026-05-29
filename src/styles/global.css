@@ -288,12 +288,19 @@ button {
 
 .nav-hamburger {
   display: none;
-  flex-direction: column;
-  gap: 5px;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
   background: none;
   border: none;
   cursor: pointer;
   padding: 4px;
+}
+
+.nav-hamburger-lines {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .nav-hamburger span {
@@ -304,11 +311,10 @@ button {
 }
 
 .nav-hamburger-label {
-  font-size: 10px;
-  letter-spacing: 0.15em;
+  font-size: 13px;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--color-text-primary);
-  margin-left: 6px;
 }
 
 .nav-mobile {
