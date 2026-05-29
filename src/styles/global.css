@@ -773,8 +773,12 @@ button {
     position: static;
     margin-top: 16px;
   }
+  .car-record-know-more {
+    gap: 10px;
+    padding: 10px 12px;
+  }
   .car-record-know-more span {
-    font-size: 12px;
+    font-size: 11px;
   }
 }
 
