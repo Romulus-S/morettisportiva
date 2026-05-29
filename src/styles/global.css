@@ -773,6 +773,9 @@ button {
     position: static;
     margin-top: 16px;
   }
+  .car-record-know-more span {
+    font-size: 12px;
+  }
 }
 
 /* ── Car record header ── */
