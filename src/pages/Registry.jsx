@@ -2,35 +2,12 @@ import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useRegistry } from '../hooks/useRegistry'
 import CarCard from '../components/CarCard'
-import CarListRow from '../components/CarListRow'
 
 const MODELS = ['All', 'S1', 'S1 SS', 'S2', 'S4', 'Convertibile', 'Trasformabile']
-
-function GridIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1">
-      <rect x="1" y="1" width="6" height="6" rx="1" />
-      <rect x="9" y="1" width="6" height="6" rx="1" />
-      <rect x="1" y="9" width="6" height="6" rx="1" />
-      <rect x="9" y="9" width="6" height="6" rx="1" />
-    </svg>
-  )
-}
-
-function ListIcon() {
-  return (
-    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1">
-      <line x1="1" y1="4" x2="15" y2="4" />
-      <line x1="1" y1="8" x2="15" y2="8" />
-      <line x1="1" y1="12" x2="15" y2="12" />
-    </svg>
-  )
-}
 
 export default function Registry() {
   const { cars, loading } = useRegistry()
   const [activeTab, setActiveTab] = useState('All')
-  const [view, setView] = useState('grid')
 
   const counts = useMemo(() => {
     const c = { All: cars.length }
@@ -89,7 +66,7 @@ export default function Registry() {
         </Link>
       </p>
 
-      {/* Tabs + view toggle */}
+      {/* Tabs */}
       <div className="tabs-bar">
         <div className="tabs">
           {MODELS.map(m => (
@@ -103,46 +80,15 @@ export default function Registry() {
             </button>
           ))}
         </div>
-        <div className="view-toggle">
-          <button
-            className={`view-btn ${view === 'grid' ? 'active' : ''}`}
-            onClick={() => setView('grid')}
-            aria-label="Grid view"
-          >
-            <GridIcon />
-          </button>
-          <button
-            className={`view-btn ${view === 'list' ? 'active' : ''}`}
-            onClick={() => setView('list')}
-            aria-label="List view"
-          >
-            <ListIcon />
-          </button>
-        </div>
       </div>
 
       {/* Cars */}
       {filtered.length === 0 ? (
         <div className="empty-state">No cars in this category yet.</div>
-      ) : view === 'grid' ? (
+      ) : (
         <div className="registry-grid">
           {filtered.map(car => (
             <CarCard key={car.chassis} car={car} />
-          ))}
-        </div>
-      ) : (
-        <div className="registry-list">
-          <div className="list-header">
-            <span className="list-header-cell">Chassis</span>
-            <span className="list-header-cell">Model</span>
-            <span className="list-header-cell">Year</span>
-            <span className="list-header-cell">Color</span>
-            <span className="list-header-cell">Location</span>
-            <span className="list-header-cell">Status</span>
-            <span className="list-header-cell">Owner</span>
-          </div>
-          {filtered.map(car => (
-            <CarListRow key={car.chassis} car={car} />
           ))}
         </div>
       )}
