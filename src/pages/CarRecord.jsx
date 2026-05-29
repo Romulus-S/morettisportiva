@@ -83,7 +83,7 @@ export default function CarRecord() {
       {/* Header */}
       <div style={{ position: 'relative', marginBottom: 32 }}>
         <div className="car-record-chassis">{maskChassis(car.chassis)}</div>
-        <h1 className="car-record-title">Fiat-Moretti 850 Sportiva {car.model}</h1>
+        <h1 className="car-record-title">Moretti Sportiva {car.model}</h1>
         <div className="car-record-badges">
           <StatusBadge status={car.status} />
           <span className="car-record-badge-meta">{car.year}</span>
