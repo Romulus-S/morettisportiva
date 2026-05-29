@@ -59,7 +59,7 @@ export default function Registry() {
           <div className="stat-label">Owner known</div>
         </div>
       </div>
-      <p style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 10, marginBottom: 32 }}>
+      <p style={{ fontSize: 11, color: 'var(--color-text-tertiary)', marginTop: 8, marginBottom: 20 }}>
         *This is most likely an overcount due to repeats and survivorship.{' '}
         <Link to="/contact" style={{ color: 'inherit', textDecoration: 'underline', textUnderlineOffset: '3px' }}>
           Please share your knowledge to improve this number.
