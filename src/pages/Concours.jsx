@@ -12,7 +12,7 @@ const ENTRIES = [
     result: 'Second in class',
     carYear: null,
     carModel: 'S1',
-    chassis: null,
+    chassis: 'unknown59',
     image: '/images/concours-pebblebeach1.png',
   },
   {
@@ -22,7 +22,7 @@ const ENTRIES = [
     result: 'Most Beautiful Car',
     carYear: '1967',
     carModel: null,
-    chassis: null,
+    chassis: '0650266',
     image: '/images/concours-tourauto2.jpg',
   },
   {
@@ -32,7 +32,7 @@ const ENTRIES = [
     result: null,
     carYear: '1968',
     carModel: 'S1 SS',
-    chassis: null,
+    chassis: 'unknown10',
     image: '/images/concours-villadeste.jpg',
   },
   {
@@ -42,7 +42,7 @@ const ENTRIES = [
     result: 'Cancelled',
     carYear: '1968',
     carModel: null,
-    chassis: null,
+    chassis: '0876394',
     image: '/images/concours-monte-carlo.jpg',
   },
   {
@@ -52,7 +52,7 @@ const ENTRIES = [
     result: null,
     carYear: null,
     carModel: 'S2',
-    chassis: null,
+    chassis: '1297076',
     image: '/images/concours-greenwich.png',
   },
   {
@@ -62,7 +62,7 @@ const ENTRIES = [
     result: null,
     carYear: '1967',
     carModel: 'S1 SS',
-    chassis: null,
+    chassis: '1084286',
     image: '/images/concours-pebblebeach2.png',
   },
   {
@@ -72,7 +72,7 @@ const ENTRIES = [
     result: null,
     carYear: '1968',
     carModel: null,
-    chassis: null,
+    chassis: '997491',
     image: '/images/concours-tourauto1.jpg',
   },
   {
@@ -82,7 +82,7 @@ const ENTRIES = [
     result: 'Second in class',
     carYear: '1967',
     carModel: 'S1 SS',
-    chassis: null,
+    chassis: '0742454',
     image: '/images/concours-schwetzingen.jpg',
   },
 ]
