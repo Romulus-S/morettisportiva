@@ -37,13 +37,13 @@ const ENTRIES = [
   },
   {
     event: 'Rallye Monte-Carlo Historique',
-    year: '2021',
+    year: '2024',
     location: 'Monaco',
     result: 'Cancelled',
     carYear: '1968',
     carModel: 'S1',
     chassis: '0876394',
-    image: '/images/concours-monte-carlo.jpg',
+    image: '/images/concours-monte-carlo2.jpeg',
   },
   {
     event: 'Greenwich Concours d\'Elegance',
