@@ -44,6 +44,14 @@ export default function Registry() {
         <h1>Moretti Sportiva</h1>
       </div>
 
+      {/* Mobile promo */}
+      <p className="registry-mobile-promo">
+        Check out the Sportiva's{' '}
+        <Link to="/racing" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>racing history</Link>
+        {' '}or modern international{' '}
+        <Link to="/concours" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>concours &amp; rally appearances</Link>!
+      </p>
+
       {/* Stats */}
       <div className="stats-row">
         <div className="stat-card">
