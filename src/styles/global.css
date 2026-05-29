@@ -320,6 +320,7 @@ button {
 }
 
 .nav-mobile .nav-links {
+  display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 18px;
