@@ -456,18 +456,6 @@ button {
   color: var(--color-text-tertiary);
 }
 
-@media (max-width: 768px) {
-  .stats-row {
-    grid-template-columns: 1fr;
-  }
-  .stat-card {
-    border-right: none;
-    border-bottom: 0.5px solid var(--color-border);
-  }
-  .stat-card:last-child {
-    border-bottom: none;
-  }
-}
 
 /* ── Tabs bar ── */
 
