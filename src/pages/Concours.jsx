@@ -39,7 +39,7 @@ const ENTRIES = [
     event: 'Rallye Monte-Carlo Historique',
     year: '2024',
     location: 'Monaco',
-    result: 'Cancelled',
+    result: null,
     carYear: '1968',
     carModel: 'S1',
     chassis: '0876394',
