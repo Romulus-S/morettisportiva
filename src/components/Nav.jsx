@@ -3,8 +3,6 @@ import { NavLink, Link } from 'react-router-dom'
 
 const LINKS = [
   { to: '/', label: 'Registry' },
-  { to: '/design', label: 'Design' },
-  { to: '/specs', label: 'Specs' },
   { to: '/racing', label: 'Racing' },
   { to: '/concours', label: 'Concours & Rallies' },
   { to: '/for-sale', label: 'For sale' },
