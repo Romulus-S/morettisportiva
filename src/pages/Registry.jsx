@@ -47,7 +47,7 @@ export default function Registry() {
       {/* Mobile promo */}
       <p className="registry-mobile-promo">
         Check out the Sportiva's{' '}
-        <Link to="/racing" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>racing history</Link>
+        <Link to="/racing" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>1960s racing history</Link>
         {' '}or modern international{' '}
         <Link to="/concours" style={{ textDecoration: 'underline', textUnderlineOffset: '3px' }}>concours &amp; rally appearances</Link>!
       </p>
