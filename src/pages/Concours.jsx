@@ -75,6 +75,16 @@ const ENTRIES = [
     chassis: null,
     image: '/images/concours-tourauto2.jpg',
   },
+  {
+    event: 'Rallye Monte-Carlo Historique',
+    year: '2021',
+    location: 'Monaco',
+    result: 'Cancelled',
+    carYear: '1968',
+    carModel: null,
+    chassis: null,
+    image: '/images/concours-monte-carlo.jpg',
+  },
 ]
 
 function ConcoursCard({ entry, slug }) {
