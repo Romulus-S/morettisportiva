@@ -76,6 +76,16 @@ const ENTRIES = [
     image: '/images/concours-tourauto1.jpg',
   },
   {
+    event: 'Greenwich Concours d\'Elegance',
+    year: '2026',
+    location: 'Greenwich, CT, USA',
+    result: 'Class Award',
+    carYear: '1970',
+    carModel: 'S2',
+    chassis: '1538782',
+    image: '/images/concours-greenwich2026.png',
+  },
+  {
     event: 'Classic Gala Schwetzingen',
     year: '2019',
     location: 'Schwetzingen, Germany',
