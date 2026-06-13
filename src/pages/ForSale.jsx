@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const LISTINGS = [
   {
@@ -100,6 +101,10 @@ function ForSaleCard({ entry }) {
 }
 
 export default function ForSale() {
+  usePageMeta({
+    title: 'Cars for Sale — Moretti Sportiva Registry',
+    description: 'Moretti Sportiva cars currently available for sale. Rare Fiat-based Italian sports coupés from the 1960s and 70s.',
+  })
   return (
     <main className="page">
       <div className="registry-hero">

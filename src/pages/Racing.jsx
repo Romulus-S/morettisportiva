@@ -1,4 +1,5 @@
 import { cloudinaryImage } from '../utils/cloudinary'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 const ENTRIES = [
   {
@@ -65,6 +66,10 @@ function RacingCard({ entry }) {
 }
 
 export default function Racing() {
+  usePageMeta({
+    title: 'Racing History — Moretti Sportiva Registry',
+    description: 'The Moretti Sportiva\'s motorsport history — Targa Florio class wins, Monte Carlo Rally appearances, and more.',
+  })
   return (
     <main className="page">
       <div className="registry-hero">

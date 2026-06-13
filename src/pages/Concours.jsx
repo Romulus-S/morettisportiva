@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useRegistry } from '../hooks/useRegistry'
 import { cloudinaryImage, maskChassis } from '../utils/cloudinary'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 // Hardcoded entries. image is a path or Cloudinary URL (optional).
 // chassis links to the registry listing if the car is in the registry.
@@ -150,6 +151,10 @@ function ConcoursCard({ entry, slug }) {
 }
 
 export default function Concours() {
+  usePageMeta({
+    title: 'Concours & Rallies — Moretti Sportiva Registry',
+    description: 'Moretti Sportiva appearances at Pebble Beach, Villa d\'Este, Tour Auto, Greenwich Concours, and other major events.',
+  })
   const { cars } = useRegistry()
 
   // Build a map of chassis → slug for linking

@@ -1,4 +1,10 @@
+import { usePageMeta } from '../hooks/usePageMeta'
+
 export default function Contact() {
+  usePageMeta({
+    title: 'Contact — Moretti Sportiva Registry',
+    description: 'Get in touch with the Moretti Sportiva Registry. Share information about a car, report a find, or ask a question.',
+  })
   return (
     <main className="page">
       <div style={{ paddingTop: 40, maxWidth: 560 }}>

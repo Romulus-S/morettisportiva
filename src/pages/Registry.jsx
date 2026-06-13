@@ -1,11 +1,16 @@
 import { useState, useMemo } from 'react'
 import { Link } from 'react-router-dom'
 import { useRegistry } from '../hooks/useRegistry'
+import { usePageMeta } from '../hooks/usePageMeta'
 import CarCard from '../components/CarCard'
 
 const MODELS = ['All', 'S1', 'S1 SS', 'S2', 'S4', 'Convertibile', 'Trasformabile']
 
 export default function Registry() {
+  usePageMeta({
+    title: 'Registry — Moretti Sportiva',
+    description: 'A complete registry of every known Fiat-Moretti 850 Sportiva — S1, S2, S4, and Targa. Built from primary sources, firsthand inspection, and original documentation.',
+  })
   const { cars, loading } = useRegistry()
   const [activeTab, setActiveTab] = useState('All')
 

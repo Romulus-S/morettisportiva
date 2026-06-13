@@ -1,5 +1,6 @@
 import { useParams, Link, Navigate } from 'react-router-dom'
 import { maskChassis } from '../utils/cloudinary'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 function parseDescription(text) {
   const html = text.replace(
@@ -52,6 +53,15 @@ export default function CarRecord() {
   const { slug } = useParams()
   const { cars, loading } = useRegistry()
 
+  const car = !loading ? cars.find(c => c.slug === slug) : null
+  const carTitle = car
+    ? `${car.year ? car.year + ' ' : ''}Moretti Sportiva ${car.model}${car.location ? ' — ' + car.location : ''}`
+    : null
+  const carDesc = car
+    ? `${car.year ? car.year + ' ' : ''}Moretti Sportiva ${car.model}${car.color ? ', ' + car.color : ''}${car.location ? ', ' + car.location : ''}.${car.description ? ' ' + car.description.slice(0, 140) + '…' : ''}`
+    : null
+  usePageMeta({ title: carTitle, description: carDesc })
+
   if (loading) {
     return (
       <main className="page">
@@ -60,7 +70,6 @@ export default function CarRecord() {
     )
   }
 
-  const car = cars.find(c => c.slug === slug)
   if (!car) return <Navigate to="/" replace />
 
   const specs = [
