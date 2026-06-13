@@ -84,7 +84,7 @@ const ENTRIES = [
     carYear: '1970',
     carModel: 'S2',
     chassis: '1538782',
-    image: '/images/concours-greenwich2026.png',
+    image: '/images/concours-greenwich2026.jpg',
   },
   {
     event: 'Classic Gala Schwetzingen',
