@@ -52,7 +52,7 @@ const LISTINGS = [
     location: 'Auneau-Bleury-Saint-Symphorien, France',
     status: 'located',
     owner: 'known-private',
-    image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/silverff/caract1.jpg',
+    image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/silverff/ff1.jpg',
   },
 ]
 
