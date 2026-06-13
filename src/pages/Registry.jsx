@@ -1,5 +1,5 @@
-import { useState, useMemo } from 'react'
-import { Link } from 'react-router-dom'
+import { useMemo } from 'react'
+import { Link, useSearchParams } from 'react-router-dom'
 import { useRegistry } from '../hooks/useRegistry'
 import { usePageMeta } from '../hooks/usePageMeta'
 import CarCard from '../components/CarCard'
@@ -12,7 +12,9 @@ export default function Registry() {
     description: 'A complete archive of every known Fiat 850 Moretti Sportiva — S1, S2, S4, and Targas.',
   })
   const { cars, loading } = useRegistry()
-  const [activeTab, setActiveTab] = useState('All')
+  const [searchParams, setSearchParams] = useSearchParams()
+  const activeTab = MODELS.includes(searchParams.get('model')) ? searchParams.get('model') : 'All'
+  const setActiveTab = m => setSearchParams(m === 'All' ? {} : { model: m }, { replace: true })
 
   const counts = useMemo(() => {
     const c = { All: cars.length }
