@@ -2,15 +2,38 @@ import { useEffect } from 'react'
 
 const DEFAULT_TITLE = 'Moretti Sportiva — Registry & Archive'
 const DEFAULT_DESC = 'A complete registry of every known Fiat-Moretti 850 Sportiva — S1, S2, S4, and Targa. Built from primary sources, firsthand inspection, and original documentation.'
+const DEFAULT_IMAGE = 'https://morettisportiva.com/images/racing-targa1967.jpg'
 
-export function usePageMeta({ title, description } = {}) {
+function setMeta(selector, attr, value) {
+  let tag = document.querySelector(selector)
+  if (!tag) {
+    const [attrName, attrVal] = attr.split('=').map(s => s.replace(/"/g, ''))
+    tag = document.createElement('meta')
+    tag.setAttribute(attrName, attrVal)
+    document.head.appendChild(tag)
+  }
+  tag.setAttribute('content', value)
+}
+
+export function usePageMeta({ title, description, image } = {}) {
   useEffect(() => {
-    if (title) document.title = title
-    const tag = document.querySelector('meta[name="description"]')
-    if (tag && description) tag.setAttribute('content', description)
+    const t = title || DEFAULT_TITLE
+    const d = description || DEFAULT_DESC
+    const img = image || DEFAULT_IMAGE
+
+    document.title = t
+    setMeta('meta[name="description"]', 'name="description"', d)
+    setMeta('meta[property="og:title"]', 'property="og:title"', t)
+    setMeta('meta[property="og:description"]', 'property="og:description"', d)
+    setMeta('meta[property="og:url"]', 'property="og:url"', window.location.href)
+    setMeta('meta[property="og:image"]', 'property="og:image"', img)
+
     return () => {
       document.title = DEFAULT_TITLE
-      if (tag) tag.setAttribute('content', DEFAULT_DESC)
+      setMeta('meta[name="description"]', 'name="description"', DEFAULT_DESC)
+      setMeta('meta[property="og:title"]', 'property="og:title"', DEFAULT_TITLE)
+      setMeta('meta[property="og:description"]', 'property="og:description"', DEFAULT_DESC)
+      setMeta('meta[property="og:image"]', 'property="og:image"', DEFAULT_IMAGE)
     }
-  }, [title, description])
+  }, [title, description, image])
 }

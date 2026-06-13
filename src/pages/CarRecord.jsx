@@ -60,7 +60,7 @@ export default function CarRecord() {
   const carDesc = car
     ? `${car.year ? car.year + ' ' : ''}Moretti Sportiva ${car.model}${car.color ? ', ' + car.color : ''}${car.location ? ', ' + car.location : ''}.${car.description ? ' ' + car.description.slice(0, 140) + '…' : ''}`
     : null
-  usePageMeta({ title: carTitle, description: carDesc })
+  usePageMeta({ title: carTitle, description: carDesc, image: car?.imageUrls?.[0] || null })
 
   if (loading) {
     return (
