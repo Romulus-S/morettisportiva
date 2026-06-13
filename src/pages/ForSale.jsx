@@ -56,6 +56,17 @@ const LISTINGS = [
     image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/valproj/1.webp',
   },
   {
+    chassis: 'unknown60',
+    slug: '268601631',
+    year: '1966',
+    model: 'S1',
+    color: 'Red',
+    location: 'Coulsdon, Surrey, UK',
+    status: 'located',
+    owner: 'known-public',
+    image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/hdv622d/2.webp',
+  },
+  {
     chassis: 'unknown5',
     slug: '1948327216',
     year: '1967',
