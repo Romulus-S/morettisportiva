@@ -21,6 +21,7 @@ const LISTINGS = [
     location: 'Sirnach, Switzerland',
     status: 'located',
     owner: 'known-private',
+    price: 'CHF 75,000',
     image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/sirnach/sirnach15.jpg',
   },
   {
@@ -32,6 +33,7 @@ const LISTINGS = [
     location: 'Coulsdon, Surrey, UK',
     status: 'located',
     owner: 'known-public',
+    price: '£45,000',
     image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/hdv622d/2.webp',
   },
   {
@@ -43,6 +45,7 @@ const LISTINGS = [
     location: 'Schutterwald, Germany',
     status: 'located',
     owner: 'known-private',
+    price: '€49,700',
     image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/va899402/1.webp',
   },
   {
@@ -54,6 +57,7 @@ const LISTINGS = [
     location: 'Auneau-Bleury-Saint-Symphorien, France',
     status: 'located',
     owner: 'known-private',
+    price: '€55,900',
     image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/GC841SN/lemans1.png',
   },
   {
@@ -64,6 +68,7 @@ const LISTINGS = [
     location: 'Auneau-Bleury-Saint-Symphorien, France',
     status: 'located',
     owner: 'known-private',
+    price: '€18,900',
     image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/valproj/1.webp',
   },
   {
@@ -75,6 +80,7 @@ const LISTINGS = [
     location: 'Colmar, France',
     status: 'located',
     owner: 'known-public',
+    price: '€45,000',
     image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/colmar/1.jpg',
   },
   {
@@ -86,6 +92,7 @@ const LISTINGS = [
     location: 'Auneau-Bleury-Saint-Symphorien, France',
     status: 'located',
     owner: 'known-private',
+    price: '€39,500',
     image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/silverff/ff1.jpg',
   },
 ]
@@ -112,6 +119,12 @@ function ForSaleCard({ entry }) {
             <div className="car-card-meta-label">Owner</div>
             <div className="car-card-meta-value">Known</div>
           </div>
+          {entry.price && (
+            <div>
+              <div className="car-card-meta-label">Asking price</div>
+              <div className="car-card-meta-value">{entry.price}</div>
+            </div>
+          )}
         </div>
       </div>
       <div className="car-card-footer">
