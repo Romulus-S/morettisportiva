@@ -67,6 +67,17 @@ const LISTINGS = [
     image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/valproj/1.webp',
   },
   {
+    chassis: '9644737',
+    slug: '1502458695',
+    year: '1968',
+    model: 'S1',
+    color: 'Yellow',
+    location: 'Sirnach, Switzerland',
+    status: 'located',
+    owner: 'known-private',
+    image: 'https://pub-98a22e2b15b1419cafe3070c69a3ca58.r2.dev/sirnach/sirnach15.jpg',
+  },
+  {
     chassis: 'unknown5',
     slug: '1948327216',
     year: '1967',
