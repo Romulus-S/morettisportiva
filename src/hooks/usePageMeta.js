@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 const DEFAULT_TITLE = 'Moretti Sportiva — Registry & Archive'
-const DEFAULT_DESC = 'A complete registry of every known Fiat-Moretti 850 Sportiva — S1, S2, S4, and Targa. Built from primary sources, firsthand inspection, and original documentation.'
+const DEFAULT_DESC = 'A complete archive of every known Fiat 850 Moretti Sportiva — S1, S2, S4, and Targas.'
 const DEFAULT_IMAGE = 'https://morettisportiva.com/images/racing-targa1967.jpg'
 
 function setMeta(selector, attr, value) {
