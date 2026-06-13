@@ -110,22 +110,14 @@ function ForSaleCard({ entry }) {
       <div className="car-card-body">
         <div className="car-card-chassis">{entry.location}</div>
         <div className="car-card-title">{entry.year} Moretti Sportiva {entry.model}</div>
-        <div className="car-card-meta">
-          <div>
-            <div className="car-card-meta-label">Status</div>
-            <div className="car-card-meta-value">Located</div>
-          </div>
-          <div>
-            <div className="car-card-meta-label">Owner</div>
-            <div className="car-card-meta-value">Known</div>
-          </div>
-          {entry.price && (
+        {entry.price && (
+          <div className="car-card-meta">
             <div>
               <div className="car-card-meta-label">Asking price</div>
               <div className="car-card-meta-value">{entry.price}</div>
             </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
       <div className="car-card-footer">
         <span className="car-card-owner">{'*'.repeat(entry.chassis.length)}</span>
