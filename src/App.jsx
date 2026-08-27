@@ -4,7 +4,6 @@ import Registry from './pages/Registry'
 import CarRecord from './pages/CarRecord'
 import Racing from './pages/Racing'
 import Concours from './pages/Concours'
-import ForSale from './pages/ForSale'
 import Contact from './pages/Contact'
 
 function App() {
@@ -16,7 +15,6 @@ function App() {
         <Route path="/registry/:slug" element={<CarRecord />} />
         <Route path="/racing" element={<Racing />} />
         <Route path="/concours" element={<Concours />} />
-        <Route path="/for-sale" element={<ForSale />} />
         <Route path="/contact" element={<Contact />} />
       </Routes>
     </BrowserRouter>

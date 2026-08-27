@@ -5,7 +5,6 @@ const LINKS = [
   { to: '/', label: 'Registry' },
   { to: '/racing', label: 'Racing' },
   { to: '/concours', label: 'Concours & Rallies' },
-  { to: '/for-sale', label: 'For sale' },
   { to: '/contact', label: 'Contact' },
 ]
 

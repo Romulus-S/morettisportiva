@@ -6,7 +6,7 @@ const SHEET_URL = process.env.VITE_SHEETS_CSV_URL ||
 
 const BASE_URL = 'https://morettisportiva.com'
 
-const STATIC_PAGES = ['/', '/racing', '/concours', '/for-sale', '/contact']
+const STATIC_PAGES = ['/', '/racing', '/concours', '/contact']
 
 function chassisToSlug(chassis) {
   let hash = 5381
